@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 import Form from './Form'
 import logoImage from '../../assets/image/logo_instagram_text.png'
 import { Link } from 'react-router-dom'
+import Logo from '../common/Logo'
 
 const Container = styled.div`
   display: flex;
@@ -71,7 +72,7 @@ export default function Login() {
   return (
     <Container>
       <LoginContainer>
-        <LogoImg src={logoImage} />
+        <Logo height={"5rem"} width={"100%"}/>
 
         <GapContainer />
 
