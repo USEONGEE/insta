@@ -1,6 +1,6 @@
 # 코드 컨벤션
 
-> - feat: 새로운 기능 구현
+>- feat: 새로운 기능 구현
 >- fix: 오류 수정
 >- docs: 문서 수정 (예 : readme.md, json 파일 등 수정/ 문서 관련 라이브러리 설치 등)
 >- design: 마크업 및 style 작업
