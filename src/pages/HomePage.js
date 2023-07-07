@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from '../components/MainPage/Home'
+import Home from '../components/Home/Home'
 import { styled } from 'styled-components'
 
 const Container = styled.div`

@@ -1,21 +1,26 @@
 import React from 'react'
 import { styled } from 'styled-components'
 
-const ImgContainer = styled.div`
+const Container = styled.div`
+  height: 1.8rem;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  &:hover{
+    border-radius: 20px;
+    background-color: gray;
+  }
+`
+const MenuImg = styled.img`
   height: 1.2rem;
   width: 1.2rem;
 `
-const MenuImg = styled.img` 
-  height:100%;
-  width:100%;
-`
 
-
-
-export default function Menu({image}) {
+export default function Menu({ image, selectedImage, selected, onClick}) {
+  console.log(selected);
   return (
-    <ImgContainer>
-      <MenuImg src={image}/>
-    </ImgContainer>
+    <Container onClick={() => onClick()}>
+      <MenuImg src={selected ? selectedImage : image} />
+    </Container>
   )
 }
