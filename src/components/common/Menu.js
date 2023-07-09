@@ -42,13 +42,12 @@ const Container = styled.div`
   flex-direction:column;
   justify-content: space-between;
   margin-left: 0.5rem;
-  margin-top: 1.0rem;
+  margin-top: 1.8rem;
 `
 
 export default function Menu() {
   const [selectedMenu, setSelectedMenu] = useState('home');
   const handleMenuClick = (menu) => {
-    console.log('handleMenuClick')
     setSelectedMenu(menu);
   }
   return (
@@ -58,43 +57,49 @@ export default function Menu() {
         image={image.home}
         selectedImage={image.home_selected}
         selected={selectedMenu === 'home'}
-
+        title={"홈"}
       />
       <MenuIcon
         image={image.search}
         selectedImage={image.search_selected}
         selected={selectedMenu === 'search'}
         onClick={() => setSelectedMenu('search')}
+        title={"검색"}
       />
       <MenuIcon
         image={image.explore}
         selectedImage={image.explore_selected}
         selected={selectedMenu === 'explore'}
         onClick={() => handleMenuClick('explore')}
+        title={"탐색 탭"}
       />
       <MenuIcon
         image={image.video}
         selectedImage={image.video_selected}
         selected={selectedMenu === 'video'}
         onClick={() => handleMenuClick('video')}
+        title={"릴스"}
       />
       <MenuIcon
         image={image.dm}
         selectedImage={image.dm_selected}
         selected={selectedMenu === 'dm'}
         onClick={() => handleMenuClick('dm')}
+        title={"메세지"}
       />
       <MenuIcon
         image={image.info}
         selectedImage={image.info_selected}
         selected={selectedMenu === 'info'}
         onClick={() => handleMenuClick('info')}
+        title={"알림"}
       />
       <MenuIcon
         image={image.add}
         selectedImage={image.add_selected}
         selected={selectedMenu === 'add'}
         onClick={() => handleMenuClick('add')}
+        title={"만들기"}
       />
       {/* 프로필 */}
       {/* 공백 */}
@@ -103,8 +108,8 @@ export default function Menu() {
         selectedImage={image.menu_selected}
         selected={selectedMenu === 'menu'}
         onClick={() => handleMenuClick('menu')}
+        title={"더 보기"}
       />
-      <button onClick={() => console.log("클릭이되는데")}>x</button>
     </Container>
   );
 }
