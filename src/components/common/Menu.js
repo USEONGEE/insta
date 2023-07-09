@@ -41,10 +41,8 @@ const Container = styled.div`
   display:flex; 
   flex-direction:column;
   justify-content: space-between;
-  > * {
-    margin-top:2rem;
-    margin-right:1rem;
-  }
+  margin-left: 0.5rem;
+  margin-top: 1.0rem;
 `
 
 export default function Menu() {

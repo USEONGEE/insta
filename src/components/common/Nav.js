@@ -6,7 +6,7 @@ import Menu from './Menu'
 
 const NavContainer = styled.div`
   width: 19rem;
-  padding:1.5rem;
+  padding:1.2rem;
   border-right-width:1px;
   border-right-style:solid;
   border-right-color:#DBDBDB;

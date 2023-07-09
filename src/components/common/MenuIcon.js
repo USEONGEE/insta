@@ -6,6 +6,9 @@ const Container = styled.div`
   width: 100%;
   display:flex;
   align-items: center;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  margin-right:1rem;
   &:hover{
     border-radius: 20px;
     background-color: gray;
@@ -16,7 +19,7 @@ const MenuImg = styled.img`
   width: 1.2rem;
 `
 
-export default function Menu({ image, selectedImage, selected, onClick}) {
+export default function Menu({ image, selectedImage, selected, onClick }) {
   console.log(selected);
   return (
     <Container onClick={() => onClick()}>
