@@ -9,8 +9,6 @@ export const ModalContainer = styled.div`
   align-items : center;
   height : 100%;
 `;
-
-
 export const ModalBtn = styled.button`
   background-color: var(--coz-purple-600);
   text-decoration: none;
@@ -21,17 +19,11 @@ export const ModalBtn = styled.button`
   cursor: grab;
 `;
 
-export const ExitBtn = styled(ModalBtn) `
-background-color : #4000c7;
-border-radius: 10px;
-text-decoration: none;
-margin: 10px;
-padding: 5px 10px;
-width: 40px;
-height: 40px;
-display : flex;
-justify-content : center;
-align-items : center;
+export const SearchInput = styled.input`
+  width: 364px;
+  height: 40px;
+  padding: 3px 16px;
+  color: #EFEFEF;
 `;
 
 export const ModalView = styled.div.attrs((props) => ({
@@ -54,12 +46,27 @@ export const ModalView = styled.div.attrs((props) => ({
 `;
 
 const CustomModal = ({ isOpen, closeModal }) => {
+    const [searchText, setSearchText] =useState('');
+
+    const handleSearchInputChange = (e) => 
+    {
+        setSearchText(e.target.value);
+    };
+    const handleModalClick = (e) => {
+        e.stopPropagation();
+    };
     return (
-      <Modal isOpen={isOpen} onRequestClose={closeModal}>
-        <h2>검색</h2>
-        <p>Modal Content</p>
-        <p1>최근 검색항목</p1>
+      <Modal isOpen={isOpen} >
+        <ModalView onClick = {handleModalClick}>
+        <h1>검색</h1>
+        <input
+        type = 'text'
+        value = {searchText}
+        onChange={handleSearchInputChange}
+        placeholder='검색'/>
+        <p>최근 검색항목</p>
         <button onClick={closeModal}>Close Modal</button>
+        </ModalView>
       </Modal>
     );
   };
