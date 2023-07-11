@@ -34,13 +34,13 @@ const MenuImg = styled.img`
   width: 1.2rem;
 `
 
-export default function Menu({ image, selectedImage, selected, onClick, title }) {
+export default function Menu({ image, selectedImage, selected, onClick, title, useModal }) {
   console.log(selected)
   return (
     <Container onClick={() => onClick()}>
       <MenuImg src={selected ? selectedImage : image} />
       <GapContainer/>
-      <MneuItemSpan selected={selected}>{title}</MneuItemSpan>
+      {!useModal ? <MneuItemSpan selected={selected}>{title}</MneuItemSpan> : null}
     </Container>
   )
 }

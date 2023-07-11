@@ -45,8 +45,10 @@ const Container = styled.div`
   margin-top: 1.8rem;
 `
 
-export default function Menu() {
+export default function Menu({useModal}) {
   const [selectedMenu, setSelectedMenu] = useState('home');
+  
+
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
   }
@@ -58,6 +60,7 @@ export default function Menu() {
         selectedImage={image.home_selected}
         selected={selectedMenu === 'home'}
         title={"홈"}
+        useModal={useModal}
       />
       <MenuIcon
         image={image.search}
@@ -65,6 +68,7 @@ export default function Menu() {
         selected={selectedMenu === 'search'}
         onClick={() => setSelectedMenu('search')}
         title={"검색"}
+        useModal={useModal}
       />
       <MenuIcon
         image={image.explore}
@@ -72,6 +76,7 @@ export default function Menu() {
         selected={selectedMenu === 'explore'}
         onClick={() => handleMenuClick('explore')}
         title={"탐색 탭"}
+        useModal={useModal}
       />
       <MenuIcon
         image={image.video}
@@ -79,6 +84,7 @@ export default function Menu() {
         selected={selectedMenu === 'video'}
         onClick={() => handleMenuClick('video')}
         title={"릴스"}
+        useModal={useModal}
       />
       <MenuIcon
         image={image.dm}
@@ -86,6 +92,7 @@ export default function Menu() {
         selected={selectedMenu === 'dm'}
         onClick={() => handleMenuClick('dm')}
         title={"메세지"}
+        useModal={useModal}
       />
       <MenuIcon
         image={image.info}
@@ -93,6 +100,7 @@ export default function Menu() {
         selected={selectedMenu === 'info'}
         onClick={() => handleMenuClick('info')}
         title={"알림"}
+        useModal={useModal}
       />
       <MenuIcon
         image={image.add}
@@ -100,6 +108,7 @@ export default function Menu() {
         selected={selectedMenu === 'add'}
         onClick={() => handleMenuClick('add')}
         title={"만들기"}
+        useModal={useModal}
       />
       {/* 프로필 */}
       {/* 공백 */}
@@ -109,6 +118,7 @@ export default function Menu() {
         selected={selectedMenu === 'menu'}
         onClick={() => handleMenuClick('menu')}
         title={"더 보기"}
+        useModal={useModal}
       />
     </Container>
   );
