@@ -14,11 +14,11 @@ const LogoImg = styled.img`
 `
 
 
-export default function Logo({height, width}) {
+export default function Logo({height, width, img}) {
   return (
     <div>
       <LogoContainer height={height} width={width}>
-        <LogoImg src={logoImage}/>
+        <LogoImg src={img}/>
       </LogoContainer>
     </div>
   )
