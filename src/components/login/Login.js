@@ -72,7 +72,7 @@ export default function Login() {
   return (
     <Container>
       <LoginContainer>
-        <Logo height={"5rem"} width={"100%"}/>
+        <Logo height={"5rem"} width={"100%"} img={logoImage}/>
 
         <GapContainer />
 
