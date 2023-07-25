@@ -12,6 +12,8 @@ const NavContainer = styled.div`
   border-right-width:1px;
   border-right-style:solid;
   border-right-color:#DBDBDB;
+  position:fixed;
+  height:100vh;
 `
 
 const LogoContainer = styled.div`

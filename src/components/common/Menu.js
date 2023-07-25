@@ -17,6 +17,8 @@ import menu_search_selected from '../../assets/image/menu_search_selected.png';
 import menu_video from '../../assets/image/menu_video.png';
 import menu_video_selected from '../../assets/image/menu_video_selected.png';
 import { styled } from 'styled-components';
+import Explore from '../Explore/Explore';
+import ExplorePage from './ExplorePage'
 
 const image = {
   add: menu_add,
@@ -74,7 +76,10 @@ export default function Menu({useModal}) {
         image={image.explore}
         selectedImage={image.explore_selected}
         selected={selectedMenu === 'explore'}
-        onClick={() => handleMenuClick('explore')}
+        onClick={() => {
+          handleMenuClick('explore');
+        // eslint-disable-next-line no-undef
+        onExploreIconclick();}}
         title={"탐색 탭"}
         useModal={useModal}
       />
