@@ -36,7 +36,7 @@ const logoSize = {
 
 export default function Nav() {
 
-  const [useModal, setUseModal] = useState(true) // 검색, 알림창으로 인한 모달 발생 여부 state
+  const [useModal, setUseModal] = useState(false) // 검색, 알림창으로 인한 모달 발생 여부 state
 
   return (
     <NavContainer useModal={useModal}>
