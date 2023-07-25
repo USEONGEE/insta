@@ -13,12 +13,15 @@ import likeImg from '../../assets/image/menu_info.png';
 import shareImg from '../../assets/image/menu_DM.png';
 import saveImg from '../../assets/image/saved.png';
 
+import '../../style/Post.css'
+
 
 import fooImg from 'C:/Users/shdbt/Desktop/배경화면.jpg'
 
 const Container = styled.div`
+  height: auto;
   display: flex;
-  width: 30rem;// 나중에 height 제거
+  width: 30rem;
   flex-direction: column;
   border-width: 1px;
   border-style: solid;
@@ -135,7 +138,39 @@ const Content = styled.span`
   font-size: 0.8rem;
 `
 
-export default function Post({ profileImage, profileName, images, likes, content, tag, commments }) {
+const SubContainer5 = styled.div`
+  display: flex;
+`
+
+const MoreContent = styled.span`
+  font-size: 0.8rem;
+  color: #8C8C8C;
+`
+
+const SubContainer6 = styled.div`
+  display: flex;
+  margin-top: 0.5rem;
+`
+const MoreComments = styled.span`
+  font-size: 0.8rem;
+  color: #8C8C8C;
+`
+
+const FormContainer = styled.form`
+  width: 100%;
+  display: flex;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+`
+
+const Input = styled.input`
+  font-size: 0.8rem;
+  color: #8C8C8C;
+  border: none;
+  outline: none;
+`
+
+export default function Post({ profileImage, profileName, images, likes, content, tag, comments }) {
 
   return (
     <Container>
@@ -195,7 +230,21 @@ export default function Post({ profileImage, profileName, images, likes, content
           {content}
         </Content>
       </SubContainer4>
+      <SubContainer5>
+        <MoreContent>
+          더 보기
+        </MoreContent>
+      </SubContainer5>
 
+      <SubContainer6>
+        <MoreComments>
+          댓글 {comments.length}개 모두 보기
+        </MoreComments>
+      </SubContainer6>
+
+      <FormContainer>
+        <Input placeholder='댓글 달기...'/>
+      </FormContainer>
     </Container>
   )
 }

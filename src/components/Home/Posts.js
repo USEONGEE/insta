@@ -4,6 +4,7 @@ import Post from './Post'
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
 `
 
 export default function Home() {
@@ -13,7 +14,8 @@ export default function Home() {
       <Post 
       profileName={"gcc_applied_statisticss"}
       likes={999}
-      content={"예시를 위한 content입니다."}/>
+      content={"예시를 위한 content입니다."}
+      comments={[1,2,3,4,5]}/>
     </Container>
   )
 }

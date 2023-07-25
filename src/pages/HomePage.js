@@ -13,9 +13,9 @@ export default function HomePage() {
   console.log("렌더링이 되었습니다.")
   return (
     <Container>
-      {/* 스토리 */}
+      {/* todo: 스토리 */}
       <Posts />
-      {/* 계정전환 */}
+      {/* todo: 계정전환 */}
     </Container>
   )
 }
