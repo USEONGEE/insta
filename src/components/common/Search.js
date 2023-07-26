@@ -153,8 +153,6 @@ const Search = () => {
               <img src="https://via.placeholder.com/30" alt="profile" />
               <span>사용자 3</span>
             </SearchResultItem>
-
-          
           </ModalContainer>
         </ModalView>
       </Modal>
