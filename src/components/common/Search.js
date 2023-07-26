@@ -3,15 +3,21 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
+Modal.setAppElement('#root');
+
+
 const ModalContainer = styled.div`
-  // Modal을 구현하는데 전체적으로 필요한 CSS를 구현
-  width: 400px;
+  width: 397px;
+  height: 681px;
   color: black;
   font-size: 16px;
   text-align: center;
   padding: 20px;
-  transition: transform 0.3s ease-in-out; 
-  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'}; 
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(-100%)'};
 `;
 
 const SearchInput = styled.input`
