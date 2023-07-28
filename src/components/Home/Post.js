@@ -71,7 +71,6 @@ const ProfileImg = styled.img`
   width: 1.5rem;
   border-radius: 50%;
   margin-right: 0.5rem;
-  
 `
 
 const ProfileNameContainer = styled.div`
