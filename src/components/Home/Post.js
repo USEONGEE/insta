@@ -169,8 +169,21 @@ const Input = styled.input`
   border: none;
   outline: none;
 `
+/**
+ * 
+ * @param {any} profileImage 프로필 이미지
+ * @param {string} profileName 프로필 이름
+ * @param {Array} images 게시글의 이미지들
+ * @param {int} likes 게시글 좋아요 수
+ * @param {string} content 게시글의 내용
+ * @param {Array} tag 게시글의 태그들
+ * @param {Array} comments 게시글의 댓글들
+ */
+export default function Post({ profileImage, profileName, images, likes, content, tags, comments }) {
 
-export default function Post({ profileImage, profileName, images, likes, content, tag, comments }) {
+  // PostModal에게 넘겨줄 임시데이터
+  const image = [fooImg, fooImg, fooImg];
+
   const [useModal, setUseModal] = useState(false);
 
   const handleClickDetailPage = () => {
@@ -251,7 +264,7 @@ export default function Post({ profileImage, profileName, images, likes, content
       <FormContainer>
         <Input placeholder='댓글 달기...' />
       </FormContainer>
-      {useModal ? <PostModal setUseModal={setUseModal} /> : null}
+      {useModal ? <PostModal setUseModal={setUseModal} images={image} /> : null}
     </Container>
   )
 }

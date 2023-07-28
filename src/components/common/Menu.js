@@ -57,7 +57,11 @@ const MoreContainer = styled.div`
   bottom: 0;
   padding-bottom:3rem;
 `
-
+/**
+ * 
+ * @param {boolean} useModal 모달을 사용할 건지에 대한 여부
+ * @returns 
+ */
 export default function Menu({ useModal }) {
   const menu = {
     HOME: "home",
