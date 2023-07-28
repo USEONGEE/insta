@@ -169,6 +169,12 @@ const Input = styled.input`
   border: none;
   outline: none;
 `
+
+// TODO 게시글 마다 간격 및 첫 게시글과 상단 간격 조절해야함
+// TODO footer 만들어야함
+// TODO 좋아요, 댓글, 공유하기, 저장하기, 게시글 설정 기능 만들어야 함
+
+
 /**
  * 
  * @param {any} profileImage 프로필 이미지
