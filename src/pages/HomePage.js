@@ -3,10 +3,11 @@ import { styled } from 'styled-components'
 import Posts from '../components/Home/Posts'
 
 const Container = styled.div`
+  flex:4.8;
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: center;
+  justify-content: center; 
 `
 
 export default function HomePage() {
