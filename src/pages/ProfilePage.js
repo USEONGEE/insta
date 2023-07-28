@@ -15,6 +15,7 @@ export default function ProfilePage() {
   return (
     <Container>
       <Profile />
+      {/* 스토리 */}
       <PostCategory />
     </Container>
   )
