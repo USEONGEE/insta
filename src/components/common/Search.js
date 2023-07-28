@@ -3,21 +3,15 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
-Modal.setAppElement('#root');
-
-
 const ModalContainer = styled.div`
-  width: 397px;
-  height: 681px;
+  // Modal을 구현하는데 전체적으로 필요한 CSS를 구현
+  width: 400px;
   color: black;
   font-size: 16px;
   text-align: center;
   padding: 20px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  transition: transform 0.3s ease-in-out;
-  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(-100%)'};
+  transition: transform 0.3s ease-in-out; 
+  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'}; 
 `;
 
 const SearchInput = styled.input`
@@ -98,11 +92,17 @@ const ClearSearchLink = styled(Link)`
   color:blue;
   margin-top: 50px;
 `;
-
-const Search = () => {
+const Search = ({ handleCloseModal }) => {
   const [searchText, setSearchText] = useState('');
   const [isOpen, setIsOpen] = useState(true);
   const [recentSearches, setRecentSearches] = useState([]);
+
+  const searchResults = [
+    { id: 1, username: '사용자 1' },
+    { id: 2, username: '사용자 2' },
+    { id: 3, username: '사용자 3' },
+  ];
+
 
   const handleSearchInputChange = (e) => {
     setSearchText(e.target.value);
@@ -120,9 +120,14 @@ const Search = () => {
     setIsOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleModalClose = () => {
     setIsOpen(false);
+    handleCloseModal();
   };
+
+  const filteredResults = searchResults.filter((result) => 
+  result.username.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <>
@@ -131,40 +136,30 @@ const Search = () => {
       </MagnifyingGlassButton>
       <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>
         <ModalView onClick={handleModalClick}>
-        <ModalContainer isOpen={isOpen}>
+          <ModalContainer isOpen={isOpen}>
             <SearchTitle>검색</SearchTitle>
 
             <SearchInput
               type="text"
               value={searchText}
               onChange={handleSearchInputChange}
-              placeholder="검색"
-            />
+              placeholder="검색" />
             <ClearSearchContainer>
-            <RecentSearchTitle>최근 검색 항목</RecentSearchTitle>
-            <ClearSearchLink to="/" onClick={handleClearSearchHistory}>모두 지우기 </ClearSearchLink>
+              <RecentSearchTitle>최근 검색 항목</RecentSearchTitle>
+              <ClearSearchLink to="/" onClick={handleClearSearchHistory}>모두 지우기 </ClearSearchLink>
             </ClearSearchContainer>
-
-            <SearchResultItem>
-              <img src="https://via.placeholder.com/30" alt="profile" />
-              <span>사용자 1</span>
-            </SearchResultItem>
-
-            <SearchResultItem>
-              <img src="https://via.placeholder.com/30" alt="profile" />
-              <span>사용자 2</span>
-            </SearchResultItem>
-
-            <SearchResultItem>
-              <img src="https://via.placeholder.com/30" alt="profile" />
-              <span>사용자 3</span>
-            </SearchResultItem>
+            {filteredResults.map((result) => (
+              <SearchResultItem key={result.id}>
+                <img src="https://via.placeholder.com/30" alt="profile" />
+                <span>{result.username}</span>
+              </SearchResultItem>
+            ))}
           </ModalContainer>
         </ModalView>
       </Modal>
     </>
   );
-};
+}
 
   
 // eslint-disable-next-line no-undef
