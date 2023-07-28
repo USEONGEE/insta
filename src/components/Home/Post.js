@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { keyframes, styled } from 'styled-components'
 import settingButton from '../../assets/image/button_menu.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,6 +17,7 @@ import '../../style/Post.css'
 
 
 import fooImg from 'C:/Users/shdbt/Desktop/배경화면.jpg'
+import PostModal from './PostModal';
 
 const Container = styled.div`
   height: auto;
@@ -171,6 +172,11 @@ const Input = styled.input`
 `
 
 export default function Post({ profileImage, profileName, images, likes, content, tag, comments }) {
+  const [useModal, setUseModal] = useState(false);
+
+  const handleClickDetailPage = () => {
+    setUseModal(true);
+  }
 
   return (
     <Container>
@@ -237,14 +243,16 @@ export default function Post({ profileImage, profileName, images, likes, content
       </SubContainer5>
 
       <SubContainer6>
-        <MoreComments>
+        <MoreComments
+          onClick={() => handleClickDetailPage()}>
           댓글 {comments.length}개 모두 보기
         </MoreComments>
       </SubContainer6>
 
       <FormContainer>
-        <Input placeholder='댓글 달기...'/>
+        <Input placeholder='댓글 달기...' />
       </FormContainer>
+      {useModal ? <PostModal setUseModal={setUseModal} /> : null}
     </Container>
   )
 }
