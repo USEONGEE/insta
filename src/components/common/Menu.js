@@ -60,7 +60,6 @@ const MoreContainer = styled.div`
 /**
  * 
  * @param {boolean} useModal 모달을 사용할 건지에 대한 여부
- * @returns 
  */
 export default function Menu({ useModal }) {
   const menu = {
