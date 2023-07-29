@@ -16,7 +16,9 @@ import menu_search from '../../assets/image/menu_search.png';
 import menu_search_selected from '../../assets/image/menu_search_selected.png';
 import menu_video from '../../assets/image/menu_video.png';
 import menu_video_selected from '../../assets/image/menu_video_selected.png';
-import { styled } from 'styled-components';
+import  styled  from 'styled-components';
+import Modal from'react-modal';
+import Search from './Search';
 
 const image = {
   add: menu_add,
@@ -47,11 +49,19 @@ const Container = styled.div`
 
 export default function Menu({useModal}) {
   const [selectedMenu, setSelectedMenu] = useState('home');
-  
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+
 
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
-  }
+  };
+ 
+  const handleSearchClick = () => {
+    setIsSearchModalOpen(true);
+  };
+ 
+
+ 
   return (
     <Container>
       <MenuIcon
@@ -66,9 +76,12 @@ export default function Menu({useModal}) {
         image={image.search}
         selectedImage={image.search_selected}
         selected={selectedMenu === 'search'}
-        onClick={() => setSelectedMenu('search')}
         title={"검색"}
-        useModal={useModal}
+        onClick={handleSearchClick} 
+      />
+<Search
+        isModalOpen={isSearchModalOpen}
+        handleCloseModal={() => setIsSearchModalOpen(false)}
       />
       <MenuIcon
         image={image.explore}
