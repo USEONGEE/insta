@@ -17,9 +17,7 @@ import menu_search_selected from '../../assets/image/menu_search_selected.png';
 import menu_video from '../../assets/image/menu_video.png';
 import menu_video_selected from '../../assets/image/menu_video_selected.png';
 import { styled } from 'styled-components';
-import Explore from '../Explore/Explore';
-import ExplorePage from './ExplorePage'
-
+import { useNavigate } from 'react-router-dom';
 const image = {
   add: menu_add,
   add_selected: menu_add_selected,
@@ -49,11 +47,15 @@ const Container = styled.div`
 
 export default function Menu({useModal}) {
   const [selectedMenu, setSelectedMenu] = useState('home');
+  const navigate = useNavigate();
   
 
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
   }
+  const handleExploreClick = () => {
+    navigate('/explorepage');
+  };
   return (
     <Container>
       <MenuIcon
@@ -76,12 +78,8 @@ export default function Menu({useModal}) {
         image={image.explore}
         selectedImage={image.explore_selected}
         selected={selectedMenu === 'explore'}
-        onClick={() => {
-          handleMenuClick('explore');
-        // eslint-disable-next-line no-undef
-        onExploreIconclick();}}
+        onClick={handleExploreClick}
         title={"탐색 탭"}
-        useModal={useModal}
       />
       <MenuIcon
         image={image.video}
