@@ -7,7 +7,7 @@ import Search from "./components/common/Search";
 function App({IDHint, PasswordHint}) {
   return (
     <div>
-      <Search />
+      <Router />
     </div>
   );
 }
