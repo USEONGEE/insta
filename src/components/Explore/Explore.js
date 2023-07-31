@@ -1,14 +1,25 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import styled from 'styled-components';
+
 const ImagesGridWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 20px 0;
+  width: 1102px;
 `;
+const extendImageList = (images) => {
+  let newImages = [...images];
+  for (let i = 0; i < images.length; i++) {
+    newImages.push(images[i]);
+  }
+  return newImages;
+};
+
 
 const ImagesGrid = styled.div`
-  width: 100%;
-  max-width: 940px;
+  width: 90%;
+  height:auto;
+  max-width: 900px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -41,11 +52,27 @@ const Explore = () => {
     'https://via.placeholder.com/300',
     'https://via.placeholder.com/300',
   ];
+  const [imageList, setImageList] = useState(mockImages);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+      
+      if (maxScrollTop - scrollTop < 300) {
+        setImageList((prevImageList) => extendImageList(prevImageList));
+      }
+    };
+    window.addEventListener('scroll',handleScroll);
+    return () =>{
+      window.removeEventListener('scroll',handleScroll);
+    };
+  },[]);
 
   return (
     <ImagesGridWrapper>
       <ImagesGrid>
-        {mockImages.map((src, index) => (
+        {imageList.map((src, index) => (
           <ImageWrapper key={index}>
             <Image src={src} alt={`Explore image ${index}`} />
           </ImageWrapper>
