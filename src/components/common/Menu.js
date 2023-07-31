@@ -18,6 +18,7 @@ import menu_video from '../../assets/image/menu_video.png';
 import menu_video_selected from '../../assets/image/menu_video_selected.png';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const image = {
   add: menu_add,
   add_selected: menu_add_selected,
@@ -54,15 +55,20 @@ export default function Menu({useModal}) {
     setSelectedMenu(menu);
   }
   const handleExploreClick = () => {
-    navigate('/explorepage');
+    setSelectedMenu('explore');
+    navigate('/ExplorePage');
+  };
+  const handleHomeClick = () => {
+    setSelectedMenu('home');
+    navigate('/MainPage');
   };
   return (
     <Container>
       <MenuIcon
-        onClick={() => handleMenuClick('home')}
         image={image.home}
         selectedImage={image.home_selected}
         selected={selectedMenu === 'home'}
+        onClick={handleHomeClick}
         title={"홈"}
         useModal={useModal}
       />
