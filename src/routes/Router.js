@@ -4,6 +4,7 @@ import LoginPage from '../pages/LoginPage'
 import NavPage from '../pages/NavPage'
 import HomePage from '../pages/HomePage'
 import ExplorePage from '../pages/ExplorePage'
+import Explore from '../components/Explore/Explore'
 
 export default function Router() {
   return (
@@ -12,7 +13,7 @@ export default function Router() {
         <Route path='/' element={<LoginPage/>}/>
         <Route path='/MainPage' element={<NavPage />}>
           <Route index element={<HomePage />}/>
-          </Route>
+        </Route>
         <Route path='/ExplorePage' element={<NavPage />}>
           <Route index element={<ExplorePage />}/>
         </Route>
