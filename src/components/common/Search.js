@@ -3,37 +3,47 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import { Link, useLocation,useNavigate } from 'react-router-dom';
 
+
 const ModalContainer = styled.div`
-  // Modal을 구현하는데 전체적으로 필요한 CSS를 구현
-  width: 350px;
+  width: 100%;
   color: black;
   font-size: 16px;
-  text-align: center;
-  padding: 10px;
-  transition: transform 0.3s ease-in-out; 
-  transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(100%)'}; 
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 16px;
 `;
-
-
-const SearchInput = styled.input`
-  width: 350px;
-  height: 25px;
-  padding: 8px 16px;
-  background-color: #f0f0f0;
-  color: #000;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-  margin-bottom: 10px;
-`;
-const ClearSearchContainer = styled.div`
+const SearchInputWrapper = styled.div`
   display: flex;
   align-items: center;
+  background-color: #efefef;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  padding: 5px;
+  margin-bottom: 10px;
+`;
+
+const SearchIcon = styled.img`
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+`;
+
+const SearchInput = styled.input`
+  width: 100%;
+  height: 25px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+`;
+
+const ClearSearchContainer = styled.div`
+  display: flex;
+  align-items: left;
   justify-content: space-between;
 
 `;
 const SearchResultItem = styled.div`
   display: flex;
-  align-items: center;
+  align-items: left;
   padding: 8px;
   border-bottom: 1px solid #EFEFEF;
   cursor: pointer;
@@ -64,13 +74,12 @@ const RecentSearchTitle = styled.h2`
   margin-bottom: 10px;
 `;
 const ModalView = styled.div.attrs((props) => ({
-  role: 'dialog',
+  role: 'Modal',
 }))`
-  align-items: center;
-  flex-direction: column;
-  width: 350px;
-  padding: 20px;
-  border-radius: 10px;
+display:flex;
+justify-content: center;
+
+padding: 20px;
 `;
 
 
@@ -87,39 +96,13 @@ const EmptySearchResult = styled.div`
   margin-top: 20px;
 `;
 
-const ConfirmModal = styled(Modal)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  width: 300px;
-  outline: none;
-  border-radius: 10px;
-`;
 
-const ConfirmButtons = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  width:397px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
 
 const Search = ({ isModalOpen,handleCloseModal }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
   const [searchResults, setsearchResults] = useState([
 
     { id: 1, username: '사용자 1' },
@@ -138,16 +121,8 @@ const Search = ({ isModalOpen,handleCloseModal }) => {
 
   const handleClearSearchHistory = () => {
    setsearchResults([]);
-   setConfirmModalOpen(false);
   };
-  const openConfirmModal = (e) => {
-    e.preventDefault();
-    setConfirmModalOpen(true);
-  };
-
-  const closeConfirmModal = () => {
-    setConfirmModalOpen(false);
-  };
+  
   const filteredResults = searchResults.filter((result) => 
   result.username.toLowerCase().includes(searchText.toLowerCase())
 );
@@ -168,20 +143,32 @@ const Search = ({ isModalOpen,handleCloseModal }) => {
       onClick={handleCloseModal}
       style={{
         content:{
-          width:'397px',
+          backgroundColor:'#fafafa',
+          width:'350px',
           height:'100%',
-          margin:'20px',
-        }
-      }}>
+          top:'50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          marginRight: '-50%',
+          borderRadius: '12px',
+          padding: '0px',
+          },
+          overlay:{backgroundColor: 'rgba(0,0,0,0.75)',
+          display: 'flex',
+          alignItems: 'center',
+        },}}>
         <ModalView onClick={handleModalClick}>
           <ModalContainer isOpen={isOpen}>
             <SearchTitle>검색</SearchTitle>
+            <SearchInputWrapper>
 
             <SearchInput
               type="text"
               value={searchText}
               onChange={handleSearchInputChange}
               placeholder="검색" />
+              </SearchInputWrapper>
+
             <ClearSearchContainer>
               <RecentSearchTitle>최근 검색 항목</RecentSearchTitle>
               <ClearSearchLink to="/" onClick={handleClearSearchHistory}>모두 지우기 </ClearSearchLink>
@@ -195,13 +182,7 @@ const Search = ({ isModalOpen,handleCloseModal }) => {
           </ModalContainer>
         </ModalView>
       </Modal>
-      <ConfirmModal isOpen={confirmModalOpen} onRequestClose={closeConfirmModal}>
-        <h2>검색 내역을 정말 지우시겠습니까?</h2>
-        <ConfirmButtons>
-          <Button onClick={handleClearSearchHistory}>예</Button>
-          <Button onClick={closeConfirmModal}>아니오</Button>
-        </ConfirmButtons>
-      </ConfirmModal>
+     
     </>
   );
 }
