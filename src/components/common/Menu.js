@@ -47,18 +47,23 @@ const Container = styled.div`
   margin-top: 1.8rem;
 `
 
-export default function Menu({useModal}) {
+export default function Menu({useModal,setUseModal}) {
   const [selectedMenu, setSelectedMenu] = useState('home');
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
 
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
+    if(menu ==='search'){
+      setIsSearchModalOpen(true);
+      setUseModal(true);
+
+    }
+    else{
+      setUseModal(false);
+    }
   };
  
-  const handleSearchClick = () => {
-    setIsSearchModalOpen(true);
-  };
  
 
  
@@ -77,9 +82,10 @@ export default function Menu({useModal}) {
         selectedImage={image.search_selected}
         selected={selectedMenu === 'search'}
         title={"검색"}
-        onClick={handleSearchClick} 
+        useModal={useModal}
+        onClick={()=>handleMenuClick('search')}
       />
-<Search
+      <Search
         isModalOpen={isSearchModalOpen}
         handleCloseModal={() => setIsSearchModalOpen(false)}
       />
