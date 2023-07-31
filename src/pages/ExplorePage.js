@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from 'styled-components'
+import  styled  from 'styled-components'
 import Explore from '../components/Explore/Explore'
 
 
@@ -12,8 +12,8 @@ const Container = styled.div`
 
 export default function ExplorePage() {
   return (
-    <div>
+    <Container>
       <Explore />
-    </div>
+    </Container>
   )
 }
