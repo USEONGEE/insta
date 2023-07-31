@@ -34,7 +34,7 @@ const MenuImg = styled.img`
   width: 1.2rem;
 `
 
-export default function Menu({ image, selectedImage, selected, onClick, title, useModal }) {
+export default function Menu({ image, selectedImage, selected, onClick, title, useModal,setUseModal}) {
   console.log(selected)
   return (
     <Container onClick={() => onClick()}>
