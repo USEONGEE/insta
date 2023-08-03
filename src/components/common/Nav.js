@@ -14,8 +14,6 @@ const NavContainer = styled.div`
   border-right-width:1px;
   border-right-style:solid;
   border-right-color:#DBDBDB;
-  position:fixed;
-  height:100vh;
 `
 
 const LogoContainer = styled.div`
@@ -49,9 +47,7 @@ export default function Nav() {
           height={useModal ? logoSize.smallWidth : logoSize.bigHeight}
           img={useModal ? logoImg : textLogoImg} />
       </LogoContainer>
-      <Menu
-        useModal={useModal}
-        setUseModal={setUseModal} />
+      <Menu useModal={useModal}/>
     </NavContainer>
   )
 }
