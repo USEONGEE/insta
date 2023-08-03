@@ -17,9 +17,10 @@ import menu_search_selected from '../../assets/image/menu_search_selected.png';
 import menu_video from '../../assets/image/menu_video.png';
 import menu_video_selected from '../../assets/image/menu_video_selected.png';
 import  styled  from 'styled-components';
-import Modal from'react-modal';
 import Search from './Search';
 
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const image = {
   add: menu_add,
   add_selected: menu_add_selected,
@@ -49,6 +50,8 @@ const Container = styled.div`
 
 export default function Menu({useModal,setUseModal}) {
   const [selectedMenu, setSelectedMenu] = useState('home');
+  const navigate = useNavigate();
+  
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
 
@@ -67,13 +70,22 @@ export default function Menu({useModal,setUseModal}) {
  
 
  
+  
+  const handleExploreClick = () => {
+    setSelectedMenu('explore');
+    navigate('/ExplorePage');
+  };
+  const handleHomeClick = () => {
+    setSelectedMenu('home');
+    navigate('/MainPage');
+  };
   return (
     <Container>
       <MenuIcon
-        onClick={() => handleMenuClick('home')}
         image={image.home}
         selectedImage={image.home_selected}
         selected={selectedMenu === 'home'}
+        onClick={handleHomeClick}
         title={"홈"}
         useModal={useModal}
       />
@@ -93,9 +105,8 @@ export default function Menu({useModal,setUseModal}) {
         image={image.explore}
         selectedImage={image.explore_selected}
         selected={selectedMenu === 'explore'}
-        onClick={() => handleMenuClick('explore')}
+        onClick={handleExploreClick}
         title={"탐색 탭"}
-        useModal={useModal}
       />
       <MenuIcon
         image={image.video}
