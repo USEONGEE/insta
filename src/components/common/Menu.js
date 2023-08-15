@@ -107,6 +107,7 @@ export default function Menu({useModal,setUseModal}) {
         selected={selectedMenu === 'explore'}
         onClick={handleExploreClick}
         title={"탐색 탭"}
+        useModal={useModal}
       />
       <MenuIcon
         image={image.video}
