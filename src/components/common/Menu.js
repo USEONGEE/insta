@@ -67,8 +67,10 @@ export default function Menu({useModal,setUseModal}) {
       setIsInfoModalOpen(true);
       setUseModal(true);
      }
-
-    
+     else{
+      setUseModal(false);
+     }
+   
   };
  
   const handleExploreClick = () => {
