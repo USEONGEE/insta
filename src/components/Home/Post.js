@@ -14,9 +14,9 @@ import shareImg from '../../assets/image/menu_DM.png';
 import saveImg from '../../assets/image/saved.png';
 
 import '../../style/Post.css'
+import postsample from '../../assets/image/postsample.png';
 
 
-import fooImg from 'C:/Users/shdbt/Desktop/배경화면.jpg'
 
 const Container = styled.div`
   height: auto;
@@ -195,10 +195,10 @@ export default function Post({ profileImage, profileName, images, likes, content
         >
           {/* 나중에 이미지 데이터를 받아와서 map으로 slide 생성 */}
           <SwiperSlide>
-            <ContentImage src={fooImg} />
+            <ContentImage src={postsample} />
           </SwiperSlide>
           <SwiperSlide>
-            <ContentImage src={fooImg} />
+            <ContentImage src={postsample} />
           </SwiperSlide>
         </Swiper>
       </SwiperCOntainer>

@@ -18,7 +18,7 @@ import menu_video from '../../assets/image/menu_video.png';
 import menu_video_selected from '../../assets/image/menu_video_selected.png';
 import  styled  from 'styled-components';
 import Search from './Search';
-
+import Notification from './Notification';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const image = {
@@ -51,26 +51,26 @@ const Container = styled.div`
 export default function Menu({useModal,setUseModal}) {
   const [selectedMenu, setSelectedMenu] = useState('home');
   const navigate = useNavigate();
-  
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
 
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
+
     if(menu ==='search'){
       setIsSearchModalOpen(true);
       setUseModal(true);
+    }
+    else if(menu === 'info'){
+      // eslint-disable-next-line no-undef
+      setIsInfoModalOpen(true);
+      setUseModal(true);
+     }
 
-    }
-    else{
-      setUseModal(false);
-    }
+    
   };
  
- 
-
- 
-  
   const handleExploreClick = () => {
     setSelectedMenu('explore');
     navigate('/ExplorePage');
@@ -131,6 +131,10 @@ export default function Menu({useModal,setUseModal}) {
         onClick={() => handleMenuClick('info')}
         title={"알림"}
         useModal={useModal}
+      />
+      <Notification
+        isModalOpen={isInfoModalOpen}
+        handleCloseModal={() => setIsInfoModalOpen(false)}
       />
       <MenuIcon
         image={image.add}

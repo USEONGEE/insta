@@ -4,7 +4,6 @@ import LoginPage from '../pages/LoginPage'
 import NavPage from '../pages/NavPage'
 import HomePage from '../pages/HomePage'
 import ExplorePage from '../pages/ExplorePage'
-import Explore from '../components/Explore/Explore'
 
 export default function Router() {
   return (

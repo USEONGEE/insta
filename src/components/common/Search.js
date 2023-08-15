@@ -127,13 +127,6 @@ const Search = ({ isModalOpen,handleCloseModal }) => {
   result.username.toLowerCase().includes(searchText.toLowerCase())
 );
 
-  const handleOpenModal = () => {
-    setIsOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsOpen(false);
-   navigate('/MainPage')  };
 
   return (
     <>

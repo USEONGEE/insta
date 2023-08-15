@@ -47,7 +47,7 @@ export default function Nav() {
           height={useModal ? logoSize.smallWidth : logoSize.bigHeight}
           img={useModal ? logoImg : textLogoImg} />
       </LogoContainer>
-      <Menu useModal={useModal}/>
+      <Menu useModal={useModal} />
     </NavContainer>
   )
 }
